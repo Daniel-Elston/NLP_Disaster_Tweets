@@ -1,0 +1,42 @@
+project:
+  name: 'NLP_Disaster_Tweets'
+  dir: 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets'
+
+sys:
+  fig_size: [18,12]
+
+data:
+  raw_data_train: 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets/Data/A_Raw/train.csv'
+  raw_data_test: 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets/Data/A_Raw/test.csv'
+
+  c1_train: 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets/Data/Z_Output_Data/c1_init_process_train.parquet'
+  c1_test: 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets/Data/Z_Output_Data/c1_init_process_test.parquet'
+
+subdirs:
+  - 'utils'
+  - 'Modularization'
+  - 'Scripts'
+
+
+
+# Pipe Inputs
+raw_dtype:
+    'id': 'int64'
+    'keyword': 'object'
+    'location': 'object'
+    'text': 'object'
+    'target': 'int64'
+
+true_dtype:
+    'id': 'int64'
+    'keyword': 'object'
+    'location': 'object'
+    'text': 'object'
+    'target': 'int64'
+
+dd_descriptions:
+    'id': 'Unique identifier for each tweet'
+    'keyword': 'Keyword from the tweet'
+    'location': 'Location the tweet was sent from'
+    'text': 'Text of the tweet'
+    'target': 'Whether the tweet is about a real disaster (1) or not (0)'
