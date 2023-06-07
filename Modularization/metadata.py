@@ -60,3 +60,39 @@ class DataDictionary:
 
         df_DD = pd.DataFrame(df_DataDict)
         return df_DD
+    
+
+class BasicMetaData:
+    def __init__(self, 
+                 df:pd.DataFrame
+                 ):
+        self.df = df
+        """
+        Class to generate basic metadata for a given DataFrame
+
+        Args:
+            df (pd.DataFrame): DataFrame to generate metadata for
+        """
+        
+    def generate_basic_metadata(self,
+                                df:pd.DataFrame
+                                ):
+        nan_count = self.df.isna().sum()
+        nan_percent = round(nan_count / len(self.df) * 100, 2)
+        
+        target_vcs = self.df.target.value_counts()
+        target_percent = round(target_vcs / len(self.df) * 100, 2)
+        
+        duplicate_count = self.df.duplicated().sum()
+        duplicate_percent = round(duplicate_count / len(self.df) * 100, 2)
+        
+        metadata = {
+            'nan_count': nan_count,
+            'nan_percent': nan_percent,
+            'target_count': target_vcs,
+            'target_percent': target_percent,
+            'duplicate_count': duplicate_count,
+            'duplicate_percent': duplicate_percent
+        }
+        
+        return metadata

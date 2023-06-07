@@ -32,7 +32,7 @@ true_dtype:
     'keyword': 'object'
     'location': 'object'
     'text': 'object'
-    'target': 'int64'
+#    'target': 'int64'
 
 dd_descriptions:
     'id': 'Unique identifier for each tweet'
