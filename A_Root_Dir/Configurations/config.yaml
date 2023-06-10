@@ -3,14 +3,15 @@ project:
   dir: 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets'
 
 sys:
-  fig_size: [18,12]
+  fig_size_m: [20,15]
+  fig_size_l: [12,12]
 
 data:
   raw_data_train: 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets/Data/A_Raw/train.csv'
   raw_data_test: 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets/Data/A_Raw/test.csv'
 
-  c1_train: 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets/Data/Z_Output_Data/c1_init_process_train.parquet'
-  c1_test: 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets/Data/Z_Output_Data/c1_init_process_test.parquet'
+  c1_train: 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets/Data/Serialised_Data_Objects/Parq/c1_ini_process_train.parquet'
+  c1_test: 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets/Data/Serialised_Data_Objects/Parq/c1_ini_process_test.parquet'
 
 subdirs:
   - 'utils'
@@ -19,7 +20,7 @@ subdirs:
 
 
 
-# Pipe Inputs
+# Pipeline Parameters
 raw_dtype:
     'id': 'int64'
     'keyword': 'object'
@@ -40,3 +41,7 @@ dd_descriptions:
     'location': 'Location the tweet was sent from'
     'text': 'Text of the tweet'
     'target': 'Whether the tweet is about a real disaster (1) or not (0)'
+  
+pipeline_parameters:
+  drop_cols: ['location']
+  text_col: 'text'

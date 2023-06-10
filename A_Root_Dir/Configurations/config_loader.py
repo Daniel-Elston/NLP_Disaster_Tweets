@@ -12,11 +12,14 @@ class ConfigLoader:
             'data': self.setup_data,
             'subdirs': self.setup_subdirs,
             
-            # Pipe Inputs
+            # Pipeline Parameters
             'raw_dtype': self.setup_raw_dtype,
             'true_dtype': self.setup_true_dtype,
-            'dd_descriptions': self.setup_dd_descriptions
+            'dd_descriptions': self.setup_dd_descriptions,
+            
+            'pipeline_parameters': self.setup_data_params,
         }
+        
 
     def setup_project(self, config):
         self.project_name = config['name']
@@ -24,7 +27,9 @@ class ConfigLoader:
         sys.path.append(self.project_dir)
 
     def setup_sys(self, config):
-        self.fig_size = tuple(config['fig_size'])
+        self.fig_size_m = tuple(config['fig_size_m'])
+        self.fig_size_l = tuple(config['fig_size_l'])
+
 
     def setup_data(self, config):
         self.raw_data_train = config.get('raw_data_train')
@@ -38,7 +43,7 @@ class ConfigLoader:
             sys.path.append(full_path)
     
     
-    # Pipe Inputs
+    # Pipeline Parameters
     def setup_raw_dtype(self, config):
         self.raw_dtype = config
 
@@ -47,6 +52,11 @@ class ConfigLoader:
 
     def setup_dd_descriptions(self, config):
         self.dd_descriptions = config
+    
+    def setup_data_params(self, config):
+        self.drop_cols = config.get('drop_cols')
+        self.text_col = config.get('text_col')
+        
 
     def load(self):
         for key, action in self.actions.items():
