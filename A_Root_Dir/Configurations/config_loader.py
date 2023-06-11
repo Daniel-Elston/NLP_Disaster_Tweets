@@ -2,6 +2,7 @@ import sys
 import os
 import yaml
 
+
 class ConfigLoader:
     def __init__(self, config_path):
         with open(config_path, 'r') as file:
@@ -15,6 +16,7 @@ class ConfigLoader:
             # Pipeline Parameters
             'raw_dtype': self.setup_raw_dtype,
             'true_dtype': self.setup_true_dtype,
+            
             'dd_descriptions': self.setup_dd_descriptions,
             
             'pipeline_parameters': self.setup_data_params,
@@ -34,9 +36,13 @@ class ConfigLoader:
     def setup_data(self, config):
         self.raw_data_train = config.get('raw_data_train')
         self.raw_data_test = config.get('raw_data_test')
-        self.parquet_train = config.get('c1_train')
-        self.parquet_test = config.get('c1_test')
         
+        # self.parquet_train = config.get('c1_train')
+        # self.parquet_test = config.get('c1_test')
+        
+        self.sdo_parq = config.get('sdo_parq')
+        self.sdo_pkl = config.get('sdo_pkl')
+         
     def setup_subdirs(self, config):
         for subdir in config:
             full_path = os.path.join(self.project_dir, subdir)
@@ -49,6 +55,9 @@ class ConfigLoader:
 
     def setup_true_dtype(self, config):
         self.true_dtype = config
+    
+    def setup_sdo_pkl(self, config):
+        self.sdo_pkl = config
 
     def setup_dd_descriptions(self, config):
         self.dd_descriptions = config

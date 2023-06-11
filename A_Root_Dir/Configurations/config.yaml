@@ -10,8 +10,8 @@ data:
   raw_data_train: 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets/Data/A_Raw/train.csv'
   raw_data_test: 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets/Data/A_Raw/test.csv'
 
-  c1_train: 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets/Data/Serialised_Data_Objects/Parq/c1_ini_process_train.parquet'
-  c1_test: 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets/Data/Serialised_Data_Objects/Parq/c1_ini_process_test.parquet'
+  sdo_parq: 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets/Data/Serialised_Data_Objects/Parq'
+  sdo_pkl: 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets/Data/Serialised_Data_Objects/Pkl'
 
 subdirs:
   - 'utils'

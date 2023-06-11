@@ -3,11 +3,11 @@ import os
 import yaml
 import pickle
 
-from nltk.corpus import stopwords
 from nltk.probability import FreqDist
-
+from nltk.corpus import stopwords
 stop_words = set(stopwords.words('english'))
-project_dir = 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets'
+
+sdo_pkl = 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets/Data/Serialised_Data_Objects/Pkl'
 
 class TextProcessor:
     def __init__(self, df, token_col):
@@ -49,10 +49,9 @@ class TextProcessor:
         return processor
 
 
-
 def load_corpus_bow(file_index):
     filename = f'corpus_bow_save_{file_index}'
-    path_to_pkl_store = os.path.join(project_dir, 'Data/Serialised_Data_Objects/Pkl', f'{filename}.pkl')
+    path_to_pkl_store = os.path.join(sdo_pkl, f'{filename}.pkl')
 
     with open(path_to_pkl_store, 'rb') as file:
         if file_index == 'sw':
