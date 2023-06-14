@@ -3,21 +3,26 @@ project:
   dir: 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets'
 
 sys:
-  fig_size_m: [20,15]
-  fig_size_l: [12,12]
+  fig_size_m: [20,15] # Monitor
+  fig_size_l: [12,12] # Laptop
 
 data:
-  raw_data_train: 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets/Data/A_Raw/train.csv'
+  raw_data_train: 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets/Data/A_Raw/train_split.csv'
+  raw_data_val: 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets/Data/A_Raw/validation.csv'
   raw_data_test: 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets/Data/A_Raw/test.csv'
 
+sdo:
   sdo_parq: 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets/Data/Serialised_Data_Objects/Parq'
   sdo_pkl: 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets/Data/Serialised_Data_Objects/Pkl'
+
+resources:
+  GloVe_input_dir: 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets/Resources/GloVe_Input/glove.twitter.27B'
+  GloVe_output_dir: 'C:/Users/delst/OneDrive/Desktop/Code/Workspace/NLP_Disaster_Tweets/Resources/GloVe_Output'
 
 subdirs:
   - 'utils'
   - 'Modularization'
   - 'Scripts'
-
 
 
 # Pipeline Parameters
@@ -43,5 +48,17 @@ dd_descriptions:
     'target': 'Whether the tweet is about a real disaster (1) or not (0)'
   
 pipeline_parameters:
-  drop_cols: ['location']
+  drop_cols: ['location', 'id']
   text_col: 'text'
+  token_col: 'tokens'
+  keyword_col: 'keyword'
+  target_col: 'target'
+  selected_features: [
+    'num_hashtags',
+    'num_mentions',
+    'num_questions',
+    'num_exclamations',
+    'num_words',
+    'num_letters',
+    'sentiment_score',
+    ]   

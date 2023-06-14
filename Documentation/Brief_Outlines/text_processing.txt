@@ -1,0 +1,11 @@
+- Removing punctuations/characters*
+- Removing URLs*
+- Removing Emails*
+- Removing Stop words*
+- Lower casing*
+- Spell Checking*
+- Tokenization*
+
+- Chat Word Corrections
+- Stemming
+- Lemmatisation

@@ -1,40 +1,12 @@
-import os
 import sys
-
-import glob
+import os
 import pickle
-
-import time
-import re
-import pprint
 
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 plt.rc('axes', grid=True)
-
-
-
-
-import nltk
-from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer
-import contractions
-
-from nltk.tokenize import TweetTokenizer
-
-from nltk.stem import WordNetLemmatizer
-
-from gensim.models import KeyedVectors
-from gensim.scripts.glove2word2vec import glove2word2vec
-
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
-
-
-
-
-from sklearn.model_selection import train_test_split
 
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.ensemble import GradientBoostingClassifier
@@ -54,6 +26,3 @@ from sklearn.metrics import accuracy_score
 from sklearn.metrics import precision_score
 from sklearn.metrics import recall_score
 from sklearn.metrics import f1_score
-
-from sklearn.base import clone
-

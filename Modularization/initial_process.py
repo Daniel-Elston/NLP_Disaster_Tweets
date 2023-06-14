@@ -8,8 +8,11 @@ import string
 import re
 import nltk
 
+import contractions
+from nltk.tokenize import TweetTokenizer
 
-class InitialProcessing:
+
+class InitialDataProcessing:
     def __init__(self, 
                  df:pd.DataFrame
                  ):
@@ -20,7 +23,7 @@ class InitialProcessing:
             df (pd.DataFrame): Dataframe to be processed.
         """             
         self.df = df
-    
+        
     def transform_dtypes(self,
                          to_dtype:dict,
                         ):
@@ -56,6 +59,7 @@ class InitialTextProcessing:
     def __init__(self, 
                  df:pd.DataFrame,
                  text_col:str,
+                 token_col:str,
                  ):
         """
         Initial text processing class.
@@ -65,6 +69,7 @@ class InitialTextProcessing:
         """        
         self.df = df
         self.text_col = text_col
+        self.token_col = token_col
     
     def transform_to_lowercase(self, 
                                ):
@@ -105,3 +110,15 @@ class InitialTextProcessing:
                     ):
         self.df[self.text_col] = self.df[self.text_col].str.replace(r'\s*http?://\S+(\s+|$)', ' ').str.strip()
         return self.df
+
+    def fix_contractions(self,
+                         ):
+        self.df[self.text_col] = self.df[self.text_col].apply(lambda x: contractions.fix(x))
+        # self.df[self.text_col] = self.df[self.text_col].apply(contractions.fix)
+        return self.df
+    
+    def tokenize_text(self, tokenizer):
+        self.df[self.token_col] = self.df[self.text_col].apply(tokenizer.tokenize)
+        return self.df
+    
+    
