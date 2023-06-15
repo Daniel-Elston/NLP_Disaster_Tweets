@@ -18,12 +18,21 @@ from sklearn.metrics import roc_auc_score
 
 
 class BinaryClassifierEvaluator:
-    def __init__(self, y_true, y_pred, y_scores):
+    def __init__(
+        self,
+        y_true:np.array,
+        y_pred:np.array,
+        y_scores:np.array
+        ):
+        """ Initialises BinaryClassifierEvaluator class. """
         self.y_true = y_true
         self.y_pred = y_pred
         self.y_scores = y_scores
         
-    def create_classification_report(self):
+    def create_classification_report(
+        self
+        ):
+        """ Creates classification report. """
         cr = classification_report(self.y_true, self.y_pred, output_dict=True)
         cr_df = pd.DataFrame(cr).transpose()
         cr_df = cr_df.rename({
@@ -35,7 +44,10 @@ class BinaryClassifierEvaluator:
         print("Classification Report:")
         return cr_df
     
-    def visualise_confusion_matrix(self):
+    def visualise_confusion_matrix(
+        self
+        ):
+        """ Visualises confusion matrix. """
         labels = ['No Disaster','Disaster']
         conf_matrix = confusion_matrix(self.y_true, self.y_pred)
         conf_matrix = pd.DataFrame(conf_matrix, index=labels, columns=labels)
@@ -48,7 +60,10 @@ class BinaryClassifierEvaluator:
         heatmap.set_ylabel('True Values ')
         plt.show()
     
-    def visualise_roc_curve(self):
+    def visualise_roc_curve(
+        self
+        ):
+        """ Visualises ROC curve. """
         fpr, tpr, thresholds = roc_curve(self.y_true, self.y_scores)
         roc_auc = auc(fpr, tpr)
         

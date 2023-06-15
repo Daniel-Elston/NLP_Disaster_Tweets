@@ -15,9 +15,10 @@ class DataDictionary:
     - Definition: The definition of the column
     """    
 
-    def __init__(self, 
-                 df:pd.DataFrame
-                 ):
+    def __init__(
+        self, 
+        df:pd.DataFrame
+        ):
         """
         Initialize the class with a DataFrame
 
@@ -28,11 +29,12 @@ class DataDictionary:
         self.df = df
    
 
-    def make_my_data_dictionary(self,
-                                raw_dtype:dict,
-                                true_dtype:dict,
-                                dd_descriptions:dict,
-                                ):
+    def make_my_data_dictionary(
+        self,
+        raw_dtype:dict,
+        true_dtype:dict,
+        dd_descriptions:dict,
+        ):
         """
         Generate a data dictionary for a given DataFrame
 
@@ -63,9 +65,10 @@ class DataDictionary:
     
 
 class BasicMetaData:
-    def __init__(self, 
-                 df:pd.DataFrame
-                 ):
+    def __init__(
+        self, 
+        df:pd.DataFrame
+        ):
         self.df = df
         """
         Class to generate basic metadata for a given DataFrame
@@ -74,9 +77,10 @@ class BasicMetaData:
             df (pd.DataFrame): DataFrame to generate metadata for
         """
         
-    def generate_basic_metadata(self,
-                                df:pd.DataFrame
-                                ):
+    def generate_basic_metadata(
+        self,
+        df:pd.DataFrame
+        ):
         nan_count = self.df.isna().sum()
         nan_percent = round(nan_count / len(self.df) * 100, 2)
         

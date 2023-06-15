@@ -10,14 +10,24 @@ from sklearn.model_selection import cross_validate
 
 
 class ModelSelection:
-    def __init__(self, models, X, y, cv):
+    def __init__(
+        self,
+        models:dict,
+        X:np.array,
+        y:np.array,
+        cv:object
+        ):
+        """ Initialises ModelSelection class. """
         self.models = models
         self.X = X
         self.y = y
         self.cv = cv
         self.report_df = None
     
-    def evaluate_models(self):
+    def evaluate_models(
+        self
+        ):
+        """ Evaluates models using cross-validation. """
         rows = {}
         for name, model in self.models.items():
             
@@ -37,7 +47,10 @@ class ModelSelection:
             }
         self.report_df = rows
     
-    def print_report(self):
+    def print_report(
+        self
+        ):
+        """ Prints report of model evaluation. """
         for name, row in self.report_df.items():
             print(f"Model: {name}")
             print(f"accuracy: {row['accuracy']:.4f}")
@@ -47,7 +60,11 @@ class ModelSelection:
             print(f"training_time: {row['training_time']:.4f} seconds")
             print()
         
-    def get_best_model(self, metric='accuracy'):
+    def get_best_model(
+        self, 
+        metric='accuracy'
+        ):
+        """ Returns name of best model. """
         best_model_name = max(self.report_df, key=lambda x: self.report_df[x][metric])
         return best_model_name
     

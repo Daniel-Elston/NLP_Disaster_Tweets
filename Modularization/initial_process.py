@@ -13,9 +13,10 @@ from nltk.tokenize import TweetTokenizer
 
 
 class InitialDataProcessing:
-    def __init__(self, 
-                 df:pd.DataFrame
-                 ):
+    def __init__(
+        self, 
+        df:pd.DataFrame
+        ):
         """
         Processing class for minor processing steps.
 
@@ -24,9 +25,10 @@ class InitialDataProcessing:
         """             
         self.df = df
         
-    def transform_dtypes(self,
-                         to_dtype:dict,
-                        ):
+    def transform_dtypes(
+        self,
+        to_dtype:dict,
+        ):
         """
         Transform dtypes of columns in dataframe.
 
@@ -41,9 +43,10 @@ class InitialDataProcessing:
             self.df[col] = self.df[col].astype(dtype)
         return self.df
     
-    def dup_nan_drop(self,
-                     drop_cols:list
-                     ):
+    def dup_nan_drop(
+        self,
+        drop_cols:list
+        ):
         """
         Drop useless data from dataframe.
 
@@ -56,11 +59,12 @@ class InitialDataProcessing:
     
 
 class InitialTextProcessing:
-    def __init__(self, 
-                 df:pd.DataFrame,
-                 text_col:str,
-                 token_col:str,
-                 ):
+    def __init__(
+        self, 
+        df:pd.DataFrame,
+        text_col:str,
+        token_col:str,
+        ):
         """
         Initial text processing class.
 
@@ -71,8 +75,9 @@ class InitialTextProcessing:
         self.text_col = text_col
         self.token_col = token_col
     
-    def transform_to_lowercase(self, 
-                               ):
+    def transform_to_lowercase(
+        self, 
+        ):
         """
         Make all characters in a column lowercase.
 
@@ -86,9 +91,10 @@ class InitialTextProcessing:
         self.df[self.text_col] = self.df[self.text_col].str.lower()
         return self.df
     
-    def remove_chars(self,
-                     text:str
-                     ):
+    def remove_chars(
+        self,
+        text:str
+        ):
         """
         Remove desired characters from text.
 
@@ -101,23 +107,33 @@ class InitialTextProcessing:
         cleaned_text = re.sub(r'[^\w\s!?#@\\\\]|[\n]', '', text)
         return cleaned_text
     
-    def apply_remove_chars(self, 
-                           ):
+    def apply_remove_chars(
+        self, 
+        ):
+        """ Apply remove_chars to a column of text """
         self.df[self.text_col] = self.df[self.text_col].apply(self.remove_chars)
         return self.df
 
-    def remove_urls(self,
-                    ):
+    def remove_urls(
+        self,
+        ):
+        """ Remove urls from a column of text """
         self.df[self.text_col] = self.df[self.text_col].str.replace(r'\s*http?://\S+(\s+|$)', ' ').str.strip()
         return self.df
 
-    def fix_contractions(self,
-                         ):
+    def fix_contractions(
+        self,
+        ):
+        """ Apply contractions.fix to a column of text """
         self.df[self.text_col] = self.df[self.text_col].apply(lambda x: contractions.fix(x))
         # self.df[self.text_col] = self.df[self.text_col].apply(contractions.fix)
         return self.df
     
-    def tokenize_text(self, tokenizer):
+    def tokenize_text(
+        self,
+        tokenizer:object
+        ):
+        """ Apply nltk tokenizer to a column of text """
         self.df[self.token_col] = self.df[self.text_col].apply(tokenizer.tokenize)
         return self.df
     
