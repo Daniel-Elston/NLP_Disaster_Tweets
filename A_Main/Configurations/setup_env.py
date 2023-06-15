@@ -3,7 +3,7 @@ import os
 
 def setup_environment(root_dir):
     
-    subdir_config = 'A_Root_Dir/Configurations'
+    subdir_config = 'A_Main/Configurations'
     filename_config = 'config.yaml'
     
     config_dir = os.path.join(root_dir, subdir_config)
