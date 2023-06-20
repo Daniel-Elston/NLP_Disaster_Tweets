@@ -73,6 +73,9 @@ class ConfigLoader:
         self.keyword_col = config.get('keyword_col')
         self.target_col = config.get('target_col')
         self.selected_features = config.get('selected_features')
+        self.embed_n_features = config.get('embed_n_features')
+        self.skf_n_splits = config.get('skf_n_splits')
+        self.skf_random_state = config.get('skf_random_state')
         
 
     def load(self):

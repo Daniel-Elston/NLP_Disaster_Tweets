@@ -62,3 +62,6 @@ pipeline_parameters:
     'num_letters',
     'sentiment_score',
     ]   
+  embed_n_features: 25
+  skf_n_splits: 9
+  skf_random_state: 42

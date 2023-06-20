@@ -5,6 +5,15 @@ import pickle
 import pandas as pd
 import numpy as np
 
+from sklearn.svm import SVC
+from sklearn.linear_model import SGDClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import GradientBoostingClassifier
+from lightgbm import LGBMClassifier
+
+from sklearn.naive_bayes import MultinomialNB
+from xgboost import XGBClassifier
+
 import time
 from sklearn.model_selection import cross_validate
 
@@ -12,17 +21,29 @@ from sklearn.model_selection import cross_validate
 class ModelSelection:
     def __init__(
         self,
-        models:dict,
+        # models:dict,
         X:np.array,
         y:np.array,
         cv:object
         ):
         """ Initialises ModelSelection class. """
-        self.models = models
+        self.models = None
         self.X = X
         self.y = y
         self.cv = cv
         self.report_df = None
+    
+    def get_models(self):
+        """ Returns dictionary of models. """
+        models = {
+            'SVM': SVC(),
+            'SGD': SGDClassifier(),
+            'RandomForest': RandomForestClassifier(max_depth=8, n_estimators=120),
+            'GBM': GradientBoostingClassifier(),
+            'LGBM': LGBMClassifier(),
+            'XGB': XGBClassifier()
+        }
+        self.models = models
     
     def evaluate_models(
         self
